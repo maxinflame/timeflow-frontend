@@ -2,7 +2,9 @@
   <header class="main-aside">
     <div class="main-aside__title-wrapper">
       <h1 class="main-aside__title">Timeflow</h1>
-      <pin-icon />
+      <div class="main-aside__button">
+        <pin-icon />
+      </div>
     </div>
     <main-menu />
   </header>
@@ -23,7 +25,7 @@ export default {
 
 <style lang="scss">
 .main-aside {
-  width: 404px;
+  width: size(404px);
   height: 100%;
   background-color: #363945;
   display: block;
@@ -38,10 +40,19 @@ export default {
   }
 
   &__title {
-    font-size: 34px;
-    line-height: 43px;
-    font-weight: 400;
+    @include title;
     margin: 0;
+  }
+
+  &__button {
+    width: size(25px);
+    height: size(25px);
+
+    & svg {
+      display: block;
+      widows: 100%;
+      height: 100%;
+    }
   }
 }
 </style>
