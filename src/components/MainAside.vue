@@ -1,5 +1,5 @@
 <template>
-  <header class="main-aside">
+  <div class="main-aside">
     <div class="main-aside__title-wrapper">
       <h1 class="main-aside__title">Timeflow</h1>
       <div class="main-aside__button">
@@ -7,7 +7,7 @@
       </div>
     </div>
     <main-menu />
-  </header>
+  </div>
 </template>
 
 <script>

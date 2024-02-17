@@ -1,7 +1,10 @@
 @use "sass:math";
 
+@import './variables.scss';
+@import './mixins/mixins.scss';
 @import './mixins/fonts.scss';
 @import './mixins/icons.scss';
+@import './mixins/resets.scss';
 
 $baseWidth: 1920px;
 

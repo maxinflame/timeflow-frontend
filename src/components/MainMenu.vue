@@ -6,7 +6,7 @@
         :key="item.title"
       >
         <a href="#" class="main-menu__link"
-          :class="item.class"
+          :class="[{'current': item.isCurrent}, item.class]"
         >{{ item.title }}</a>
       </li>
     </ul>
@@ -21,7 +21,8 @@ export default {
       menuItems: [
         {
           title: 'Calendar',
-          class: 'main-menu__link--calendar current',
+          class: 'main-menu__link--calendar',
+          isCurrent: true,
         },
         {
           title: 'Tasks',
