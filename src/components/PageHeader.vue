@@ -21,6 +21,7 @@ export default {
   gap: 41px;
   width: 100%;
   padding: 20px 17px;
+  border-bottom: 1px solid $light-lines;
 
   &__add-task {
     @include reset-button;
