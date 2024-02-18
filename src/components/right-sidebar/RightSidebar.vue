@@ -23,6 +23,7 @@
         class="task"
         v-for="(habit, i) in habits"
         :key="i"
+        :class="habit.class"
       >
         <span>{{ habit.title }}</span>
       </div>
@@ -31,18 +32,18 @@
       class="tasks"
       v-if="activeTab === 'tasks'"
     >
-      <div 
-        class="task"
+      <task-item
         v-for="(task, i) in tasks"
         :key="i"
-      >
-        <span>{{ task.title }}</span>
-      </div>
+        :title='task.title'
+      />
     </div>
   </div>
 </template>
 
 <script>
+import TaskItem from '../tasks/TaskItem.vue'
+
 export default {
   data() {
     return {
@@ -59,9 +60,11 @@ export default {
       habits: [
         {
           title: '🍱 Lunch',
+          class: 'red',
         },
         {
           title: '🧘‍♀ ️Yoga',
+          class: 'green',
         },
       ],
       tasks: [
@@ -87,7 +90,10 @@ export default {
     activeTab() {
       this.$refs.underline.style.left = `${this.$refs[this.activeTab][0].offsetLeft}px`
     }
-  }
+  },
+  components: {
+    TaskItem,
+  },
 }
 </script>
 
@@ -131,15 +137,5 @@ export default {
   flex-basis: 100%;
   flex-shrink: 1;
   padding: size(34px) size(34px) size(22px) size(34px);
-}
-
-.task {
-  padding: size(19px) size(17px) size(19px) size(25px);
-  border-radius: size(15px);
-  background-color: white;
-
-  & + .task {
-    margin-top: size(27px)
-  }
 }
 </style>
