@@ -90,8 +90,6 @@ export default {
 
   watch: {
     activeTab() {
-      // this.$refs.underline.style.left = `${this.$refs[this.activeTab][0].offsetLeft}px`
-
       this.$refs.underlineRight.style.transform = `translateX(${this.$refs[this.activeTab][0].offsetLeft}px)`;
       this.$refs.underlineLeft.style.transform = `translateX(${this.$refs[this.activeTab][0].offsetLeft}px)`;
     }
@@ -108,6 +106,12 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: .15s;
+  overflow: hidden;
+
+  &.hidden {
+    width: size(0px);
+  }
 
   &__tabs {
     padding-top: size(24px);
@@ -135,7 +139,7 @@ export default {
   background: linear-gradient(to right,#0AA0DA 0%, #67DEC9 50%, #0AA0DA 100%);
   transition: .3s;
   overflow: hidden;
-  
+
   &__closer {
     width: 50%;
     height: 100%;
@@ -143,7 +147,7 @@ export default {
     top: 0;
     background: white;
     transform: translateX(0);
-    transition: .3s;
+    transition: .15s;
 
     &--right {
       right: 100%;

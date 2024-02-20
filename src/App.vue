@@ -4,19 +4,33 @@
     <div class="page-wrapper__main">
         <page-header />
         <div class="main-wrapper">
-          <right-sidebar />
+          <div class="grid-wrapper">
+            <grid-header 
+              :isSidebarHidden="isSidebarHidden"
+              @hideSidebar="isSidebarHidden = !isSidebarHidden"
+            /> 
+          </div>
+          <right-sidebar
+            :class="{hidden :isSidebarHidden}"
+          />
         </div>
     </div>
   </div>
 </template>
 
 <script>
+import GridHeader from './components/grid/GridHeader.vue'
 import MainAside from './components/MainAside.vue'
 import PageHeader from './components/PageHeader.vue'
 import RightSidebar from './components/right-sidebar/RightSidebar.vue'
 
 export default {
-  components: { MainAside, PageHeader, RightSidebar },
+  components: { MainAside, PageHeader, RightSidebar, GridHeader },
+  data() {
+    return {
+      isSidebarHidden: false,
+    }
+  },
 }
 </script>
 
@@ -43,5 +57,10 @@ export default {
   height: 100%;
   flex-basis: 100%;
   flex-shrink: 1;
+}
+
+.grid-wrapper {
+  width: 100%;
+  height: 100%;
 }
 </style>
