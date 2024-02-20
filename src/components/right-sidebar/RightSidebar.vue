@@ -11,9 +11,11 @@
         <span>{{ tab.title }}</span>
       </button>
       <div 
-        class="right-sidebar__underline"
-        ref="underline"
-      ></div>
+        class="underline"
+      >
+        <div ref="underlineRight" class="underline__closer underline__closer--right"></div>
+        <div ref="underlineLeft" class="underline__closer underline__closer--left"></div>
+      </div>
     </div>
     <div 
       class="tasks"
@@ -88,7 +90,10 @@ export default {
 
   watch: {
     activeTab() {
-      this.$refs.underline.style.left = `${this.$refs[this.activeTab][0].offsetLeft}px`
+      // this.$refs.underline.style.left = `${this.$refs[this.activeTab][0].offsetLeft}px`
+
+      this.$refs.underlineRight.style.transform = `translateX(${this.$refs[this.activeTab][0].offsetLeft}px)`;
+      this.$refs.underlineLeft.style.transform = `translateX(${this.$refs[this.activeTab][0].offsetLeft}px)`;
     }
   },
   components: {
@@ -118,16 +123,35 @@ export default {
     align-items: center;
     justify-content: center;
   }
+}
 
-  &__underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: block;
-    height: size(3px);
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  height: size(3px);
+  width: 100%;
+  background: linear-gradient(to right,#0AA0DA 0%, #67DEC9 50%, #0AA0DA 100%);
+  transition: .3s;
+  overflow: hidden;
+  
+  &__closer {
     width: 50%;
-    background: linear-gradient(to right, #0AA0DA, #67DEC9);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: white;
+    transform: translateX(0);
     transition: .3s;
+
+    &--right {
+      right: 100%;
+    }
+
+    &--left {
+      right: 0%;
+    }
   }
 }
 
