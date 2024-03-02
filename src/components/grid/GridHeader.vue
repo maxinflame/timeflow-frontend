@@ -10,7 +10,7 @@
       <button 
         class="sidebar-hide"
         :class="{rotated: isSidebarHidden}"
-        @click="$emit('hideSidebar')"
+        @click="$emit('update:isSidebarHidden', !isSidebarHidden)"
       ></button>
     </div>
   </header>
@@ -22,8 +22,8 @@ export default {
     isSidebarHidden: Boolean,
   },
   emits: {
-    hideSidebar: null,
-  }
+    'update:isSidebarHidden': Boolean,
+  },
 }
 </script>
 

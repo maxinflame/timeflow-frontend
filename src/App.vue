@@ -6,8 +6,7 @@
         <div class="main-wrapper">
           <div class="grid-wrapper">
             <grid-header 
-              :isSidebarHidden="isSidebarHidden"
-              @hideSidebar="isSidebarHidden = !isSidebarHidden"
+              v-model:isSidebarHidden="isSidebarHidden"
             /> 
           </div>
           <right-sidebar
